@@ -16,6 +16,10 @@ import com.hcl.Mortage.Model.UserModel;
 import com.hcl.Mortage.Service.UserService;
 import com.hcl.Mortage.Validation.LoanValidation;
 
+/**
+ * @author saurabh.suman
+ *
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
