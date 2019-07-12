@@ -26,6 +26,10 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
+	/** Method to check if user is eligible for laon. If eligible then show Offer
+	 * @param model : User model 
+	 * @return : ResponseEntity body
+	 */
 	@PostMapping("/mortage")
 	public ResponseEntity<?> checkMortage(@RequestBody UserModel model) {
 
@@ -45,6 +49,11 @@ public class UserController {
 		}
 	}
 
+	/** This method saves offer for user after its selection
+	 * @param userId : id of user availaing offer
+	 * @param offerId : Offer id availaing by user
+	 * @return : ResponseEntity body
+	 */
 	@PostMapping("/offer/{userId}/{offerId}")
 	public ResponseEntity<?> userOffer(@PathVariable("userId") Integer userId,
 			@PathVariable("offerId") Integer offerId) {

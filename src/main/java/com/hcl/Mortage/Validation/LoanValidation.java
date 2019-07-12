@@ -16,6 +16,14 @@ public class LoanValidation {
 	@Autowired
 	AreaPriceService areaPriceService;
 	
+	/** This method will validate if user eligible for loan.
+	 * Validation conditions:
+	 * if age is < 25 yrs not eligible
+					 if salary < 10k not eligible
+					 if property value is < 5Lakhs not eligible
+	 * @param userModel
+	 * @return
+	 */
 	public boolean userValidateForLoan(UserModel userModel) {
 		
 		int age = Period.between(userModel.getDob(), LocalDate.now()).getYears();

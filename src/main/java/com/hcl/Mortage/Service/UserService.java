@@ -23,10 +23,18 @@ public class UserService {
 
 	@Autowired
 	OfferService offerService;
-	
+
 	@Autowired
 	UserOfferService userOfferService;
 
+	/**
+	 * This method will save user eligible for loan and show them offers if they are
+	 * eligible. It return the all the offers which are less than or equals to 80%
+	 * of property value.
+	 * 
+	 * @param model : UserModel
+	 * @return : List of offers available for user
+	 */
 	public List<Offer> mortage(UserModel model) {
 
 		userRepository.save(toEntity(model));
@@ -43,18 +51,28 @@ public class UserService {
 		return offers;
 	}
 
-	public Boolean addOfferToUser(Integer userId,  Integer offerId) {
-		UserOffer userOffer= userOfferService.addUserOffer(userId, offerId);
-		
-		if(userOffer != null) {
+	/** This method add offers to user
+	 * @param userId : id property of user
+	 * @param offerId : id property of offer
+	 * @return : boolean true if offer is added to user else false
+	 */
+	public Boolean addOfferToUser(Integer userId, Integer offerId) {
+		UserOffer userOffer = userOfferService.addUserOffer(userId, offerId);
+
+		if (userOffer != null) {
 			return true;
 		}
 		return false;
 	}
+
+	/** This method convert model to User entity.
+	 * @param model : UserModel type.
+	 * @return : User entity
+	 */
 	User toEntity(UserModel model) {
-		
-		User user  = new User();
-		
+
+		User user = new User();
+
 		user.setDob(model.getDob());
 		user.setEmail(model.getEmail());
 		user.setGender(model.getGender());
@@ -66,7 +84,7 @@ public class UserService {
 		user.setPropertyType(model.getPropertyType());
 		user.setSalary(model.getSalary());
 		user.setUserName(model.getUserName());
-		
+
 		return user;
 	}
 

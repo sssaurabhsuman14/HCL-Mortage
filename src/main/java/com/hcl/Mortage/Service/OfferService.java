@@ -14,8 +14,12 @@ public class OfferService {
 	@Autowired
 	OfferRepository offerRepository;
 	
+	/** This method will find all offers based on OfferPropertyValue property.
+	 * @param offerPropertyValue : property for offer
+	 * @return : list of offers
+	 */
 	public List<Offer> findByOfferPropertyValue(Double offerPropertyValue) {
-		
+
 		return offerRepository.findByOfferPropertyValue(offerPropertyValue);
 		
 	}
